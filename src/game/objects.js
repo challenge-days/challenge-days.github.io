@@ -48,7 +48,7 @@ game.module(
 
             jump: function () {
                 if (!this.onGround || this.killed) return;
-
+                game.audio.playSound('jump');
                 this.sprite.textures = this.jumpUpTextures;
                 this.body.velocity.y = -this.body.velocityLimit.y;
                 this.body.mass = 1;
@@ -91,8 +91,8 @@ game.module(
                 game.scene.world.removeBodyCollision(this.body);
                 this.body.velocity.y = -this.body.velocityLimit.y / 2;
                 this.sprite.textures = this.hitTextures;
-
-                game.scene.addTimer(0, function () {
+                game.audio.playSound('death', false);
+                game.scene.addTimer(3000, function () {
                     // Restart game
                     game.system.setScene('End');
                 });

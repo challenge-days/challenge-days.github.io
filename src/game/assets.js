@@ -19,6 +19,9 @@ game.addAsset('play_again.png');
 
 game.addAudio('sound/backtrack.*', 'backtrack');
 game.addAudio('sound/marimba.*', 'marimba');
+game.addAudio('sound/death.*', 'death');
+game.addAudio('sound/jump.*', 'jump');
+
 
 game.addAsset('font/wallfont.fnt');
 
