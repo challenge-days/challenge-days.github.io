@@ -134,6 +134,8 @@ game.createClass('Coin', {
     },
 
     remove: function() {
+        game.audio.playSound('marimba', false);
+
         game.scene.world.removeBody(this.body);
         game.scene.objectContainer.removeChild(this.sprite);
         game.scene.removeObject(this);

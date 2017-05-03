@@ -7,6 +7,9 @@ game.module(
     )
     .body(function () {
 
+        game.addAudio('backtrack.ogg', 'backtrack');
+        game.addAudio('marimba.ogg', 'marimba');
+
         game.createScene('Main', {
             init: function () {
                 this.world = new game.World(0, 2000);
@@ -39,9 +42,10 @@ game.module(
                 this.player = new game.Player(400, game.system.height - 400);
                 this.player.sprite.addTo(this.playerContainer);
 
-                this.addTimer(1500, this.spawnRandomObject.bind(this), true);
-                this.spawnRandomObject();
-            },
+        this.addTimer(1500, this.spawnRandomObject.bind(this), true);
+        this.spawnRandomObject();
+        game.audio.playMusic('backtrack', true);
+        },
 
             spawnRandomObject: function () {
                 var rand = Math.random();
