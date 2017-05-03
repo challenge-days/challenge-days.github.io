@@ -13,5 +13,6 @@ game.addAsset('tires.png');
 game.addAsset('player.json');
 game.addAsset('coin.json');
 game.addAsset('oneway.png');
+game.addAsset('endscreen_vol.png');
 
 });

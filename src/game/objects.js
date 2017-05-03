@@ -84,7 +84,7 @@ game.createClass('Player', {
         this.body.velocity.y = -this.body.velocityLimit.y / 2;
         this.sprite.textures = this.hitTextures;
 
-        game.scene.addTimer(2000, function() {
+        game.scene.addTimer(0, function() {
             // Restart game
             game.system.setScene('End');
         });

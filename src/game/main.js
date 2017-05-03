@@ -77,13 +77,8 @@ game.module(
             init: function () {
                 this.world = new game.World(0, 2000);
 
-                var bg = new game.Sprite('01_croquis.png').addTo(this.stage);
-
-                var text = new game.Text('Chère Mobilière, \n je me suis fait braquer par un voleur...');
-                text.position.x = game.system.width - 1700;
-                text.position.y = game.system.height - 800;
-                this.stage.addChild(text);
-
+                var bg = new game.Sprite('endscreen_vol.png').addTo(this.stage);
+                
                 this.objectContainer = new game.Container().addTo(this.stage);
                 this.playerContainer = new game.Container().addTo(this.stage);
 
