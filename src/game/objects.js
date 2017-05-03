@@ -5,6 +5,7 @@ game.module(
 
         game.createClass('Player', {
             onGround: false,
+            doubleJump: true,
             score: 0,
 
             init: function (x, y) {
@@ -31,7 +32,7 @@ game.module(
                     // 4 = oneway
                     collideAgainst: [1, 2, 3, 4],
                     velocityLimit: {
-                        x: 0,
+                        x: 200,
                         y: 1200
                     }
                 });
@@ -51,7 +52,8 @@ game.module(
                 this.sprite.textures = this.jumpUpTextures;
                 this.body.velocity.y = -this.body.velocityLimit.y;
                 this.body.mass = 1;
-                this.onGround = false;
+                this.onGround =  this.doubleJump;
+                this.doubleJump = !this.doubleJump;
             },
 
             collide: function (other) {
@@ -59,6 +61,7 @@ game.module(
                     this.body.velocity.y = 0;
                     this.body.mass = 0;
                     this.onGround = true;
+                    this.doubleJump = true;
                 }
                 else if (other.collisionGroup === 2) {
                     this.score += 100;
@@ -75,6 +78,7 @@ game.module(
                     if (this.body.last.y + this.body.shape.height / 2 <= other.position.y - other.shape.height / 2) {
                         this.body.velocity.y = 0;
                         this.onGround = true;
+                        this.doubleJump = true;
                     }
                     else return false;
                 }
