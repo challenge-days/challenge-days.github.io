@@ -76,8 +76,8 @@ game.module(
         game.createScene('End', {
             init: function () {
                 this.world = new game.World(0, 2000);
-
-                var bg = new game.Sprite('endscreen_vol.png').addTo(this.stage);
+                var spriteEndScreen = new game.Sprite('endscreen_vol_de.png');
+                var bg = spriteEndScreen.addTo(this.stage);
 
                 this.objectContainer = new game.Container().addTo(this.stage);
                 this.playerContainer = new game.Container().addTo(this.stage);
