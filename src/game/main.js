@@ -24,12 +24,17 @@ game.createScene('Main', {
         var bg = new game.Sprite('01_croquis.png').addTo(this.stage);
         this.addParallax('03_city.png', 150, -200);
         this.addParallax('04_city.png', 100, -300);
-        this.addParallax('05_trees.png', 100, -400);
         this.addParallax('05_bush.png', 50, -500);
         this.addParallax('platform.png', 0, -600);
 
         this.objectContainer = new game.Container().addTo(this.stage);
         this.playerContainer = new game.Container().addTo(this.stage);
+
+        var logo = new game.Sprite('06_logo_mobi.png');
+        logo.position.x = game.system.width - logo.width - 50;
+        logo.position.y = game.system.height - logo.height;
+        logo.zIndex = 1000;
+        this.stage.addChild(logo);
 
         this.player = new game.Player(400, game.system.height - 400);
         this.player.sprite.addTo(this.playerContainer);
