@@ -219,10 +219,10 @@ game.createClass('Oneway', {
 });
 
 game.createClass('Blop', {
-        init: function(x, y) {
+        init: function(x, y, sizeX, sizeY) {
             this.sprite = new game.Sprite('play_again.png', x, y, {
-                width : 150,
-                height: 150
+                width : sizeX,
+                height: sizeY
             });
 
             game.scene.objectContainerEnd.addChild(this.sprite);

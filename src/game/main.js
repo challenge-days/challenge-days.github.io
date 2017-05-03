@@ -90,7 +90,10 @@ game.module(
                 var bg = spriteEndScreen.addTo(this.stage);
 
                 this.objectContainerEnd = new game.Container().addTo(this.stage);
-                var playAgain = new game.Blop(800,450);
+
+                var sizeX = 150;
+                var sizeY = 150;
+                var playAgain = new game.Blop(game.system.width/2 - sizeX/2 , game.system.height/2 - sizeY/2, sizeX, sizeY);
 
             },
 
