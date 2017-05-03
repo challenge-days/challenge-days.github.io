@@ -17,4 +17,9 @@ game.addAsset('endscreen_vol_de.png');
 game.addAsset('endscreen_vol.png');
 game.addAsset('play_again.png');
 
+game.addAudio('sound/backtrack.*', 'backtrack');
+game.addAudio('sound/marimba.*', 'marimba');
+
+game.addAsset('font/wallfont.fnt');
+
 });

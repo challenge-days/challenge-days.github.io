@@ -5,6 +5,7 @@ game.module(
     
 game.createClass('Player', {
     onGround: false,
+    score: 0,
 
     init: function(x, y) {
         this.sprite = game.Animation.fromFrames('run');
@@ -60,6 +61,8 @@ game.createClass('Player', {
             this.onGround = true;
         }
         else if (other.collisionGroup === 2) {
+            this.score += 100;
+            this.scoreText.setText("Score: " + this.score);
             game.audio.playSound('marimba', false);
             other.parent.remove();
             return false;

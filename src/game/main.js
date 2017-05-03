@@ -7,9 +7,6 @@ game.module(
     )
     .body(function () {
 
-        game.addAudio('sound/backtrack.*', 'backtrack');
-        game.addAudio('sound/marimba.*', 'marimba');
-
         game.createScene('Main', {
             init: function () {
                 this.world = new game.World(0, 2000);
@@ -41,6 +38,12 @@ game.module(
 
                 this.player = new game.Player(400, game.system.height - 400);
                 this.player.sprite.addTo(this.playerContainer);
+
+                var scoreText = new game.BitmapText("Score: 0", { font: '80px wallfont' });
+                scoreText.position.x = game.system.width - scoreText.width - 250;;
+                scoreText.position.y = 30;
+                this.stage.addChild(scoreText);
+                this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
 
         this.addTimer(1500, this.spawnRandomObject.bind(this), true);
         this.spawnRandomObject();
