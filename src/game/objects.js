@@ -27,7 +27,7 @@ game.module(
                     mass: 1,
                     collisionGroup: 0,
                     // 1 = floor
-                    // 2 = pickup
+                    // 2 = pickup / Cadeau
                     // 3 = obstacle
                     // 4 = oneway
                     collideAgainst: [1, 2, 3, 4],

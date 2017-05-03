@@ -52,11 +52,11 @@ game.module(
 
             spawnRandomObject: function () {
                 var rand = Math.random();
-                if (rand < 0.1) {
-                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 400);
+                if (rand < 0.5) {
+                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 600);
                 }
-                else if (rand < 0.2) {
-                    var oneway = new game.Oneway(game.system.width, 700);
+                else if (rand < 0.7) {
+                    var oneway = new game.Oneway(game.system.width, 400 +  + Math.random() * 400);
                 }
                 else {
                     var tires = new game.Tires(game.system.width, 850);
@@ -110,7 +110,12 @@ game.module(
 
             keydown: function (key) {
                 if (key === 'SPACE')  game.system.setScene('Main');
-            }
+            },
+
+            mousedown: function () {
+                game.system.setScene('Main');
+            },
+
         });
 
     });
