@@ -65,7 +65,7 @@ game.module(
                     this.doubleJump = true;
                 }
                 else if (other.collisionGroup === 2) {
-                    this.score += 100;
+                    this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
                     if(this.score < 500) {
                         game.audio.playSound('marimba', false);
@@ -144,8 +144,14 @@ game.module(
         });
 
         game.createClass('Coin', {
-            init: function (x, y) {
-                this.sprite = game.Animation.fromFrames('coin-gold');
+            init: function (x, y, type) {
+                if (type === 'coin') {
+                    this.sprite = game.Animation.fromFrames('coin-gold');
+                    this.points = 10;
+                } else {
+                    this.sprite = game.Animation.fromFrames('cadeau-gold');
+                    this.points = 100;
+                }
                 this.sprite.animationSpeed = 0.2;
                 this.sprite.anchor.set(0.5, 0.5);
                 this.sprite.play();

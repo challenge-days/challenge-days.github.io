@@ -13,6 +13,7 @@ game.addAsset('platformHole.png');
 game.addAsset('tires.png');
 game.addAsset('player.json');
 game.addAsset('coin.json');
+game.addAsset('cadeau.json');
 game.addAsset('oneway.png');
 game.addAsset('endscreen_vol_de.png');
 game.addAsset('endscreen_vol.png');
