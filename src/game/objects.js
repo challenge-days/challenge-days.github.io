@@ -83,9 +83,10 @@ game.createClass('Player', {
         game.scene.world.removeBodyCollision(this.body);
         this.body.velocity.y = -this.body.velocityLimit.y / 2;
         this.sprite.textures = this.hitTextures;
+
         game.scene.addTimer(2000, function() {
             // Restart game
-            game.system.setScene('Main');
+            game.system.setScene('End');
         });
     },
 
