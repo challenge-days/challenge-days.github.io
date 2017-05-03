@@ -94,10 +94,6 @@ game.module(
 
                 this.objectContainerEnd = new game.Container().addTo(this.stage);
 
-                var sizeX = 150;
-                var sizeY = 150;
-                var playAgain = new game.Blop(game.system.width/2 - sizeX/2 , game.system.height/2 - sizeY/2, sizeX, sizeY);
-
             },
 
             addParallax: function (texture, pos, speed) {
@@ -106,6 +102,10 @@ game.module(
                 sprite.position.y = game.system.height - sprite.height - pos;
                 this.addObject(sprite);
                 this.stage.addChild(sprite);
+            },
+
+            mousedown: function() {
+                game.system.setScene('Main');
             },
 
             keydown: function (key) {
