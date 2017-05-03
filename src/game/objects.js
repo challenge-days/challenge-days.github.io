@@ -30,7 +30,8 @@ game.module(
                     // 2 = pickup / Cadeau
                     // 3 = obstacle
                     // 4 = oneway
-                    collideAgainst: [1, 2, 3, 4],
+                    // 5 = trou
+                    collideAgainst: [1, 2, 3, 4, 5],
                     velocityLimit: {
                         x: 200,
                         y: 1200
@@ -82,9 +83,23 @@ game.module(
                     }
                     else return false;
                 }
+                else if (other.collisionGroup === 5) {
+                    this.fell();
+                    return true;
+                }
                 return true;
             },
 
+            fell: function() {
+                this.body.mass = 3;
+                game.scene.world.removeBodyCollision(this.body);
+                this.sprite.textures = this.hitTextures;
+
+                game.scene.addTimer(500, function () {
+                    // Restart game
+                    game.system.setScene('End');
+                });
+            },
             kill: function () {
                 this.killed = true;
                 this.body.mass = 1;
@@ -135,6 +150,41 @@ game.module(
                 this.body.parent = this;
                 this.body.velocity.x = -600;
                 var shape = new game.Rectangle(40, 60);
+                this.body.addShape(shape);
+                game.scene.objectContainer.addChild(this.sprite);
+                game.scene.world.addBody(this.body);
+                game.scene.addObject(this);
+            },
+
+            remove: function () {
+                game.scene.world.removeBody(this.body);
+                game.scene.objectContainer.removeChild(this.sprite);
+                game.scene.removeObject(this);
+            },
+
+            update: function () {
+                this.sprite.position.x = this.body.position.x;
+                this.sprite.position.y = this.body.position.y;
+
+                if (this.body.position.x + this.sprite.width / 2 < 0) this.remove();
+            }
+        });
+
+        game.createClass('Trou', {
+            init: function (x, y) {
+                this.sprite = new game.Sprite('platformHole.png');
+                this.sprite.anchor.set(0.5, 0.5);
+
+                this.body = new game.Body({
+                    position: {
+                        x: x + this.sprite.width,
+                        y: y
+                    },
+                    collisionGroup: 5
+                });
+
+                this.body.velocity.x = -600;
+                var shape = new game.Rectangle(this.sprite.width, this.sprite.height);
                 this.body.addShape(shape);
                 game.scene.objectContainer.addChild(this.sprite);
                 game.scene.world.addBody(this.body);

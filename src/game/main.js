@@ -58,8 +58,11 @@ game.module(
                 else if (rand < 0.7) {
                     var oneway = new game.Oneway(game.system.width, 400 +  + Math.random() * 400);
                 }
+                else if (rand < 0.7) {
+                    var trou = new game.Trou(game.system.width, 972);
+                }
                 else {
-                    var tires = new game.Tires(game.system.width, 850);
+                    var voleur = new game.Tires(game.system.width, 850);
                 }
             },
 
