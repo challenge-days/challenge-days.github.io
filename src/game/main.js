@@ -36,10 +36,6 @@ game.module(
                 logo.zIndex = 1000;
                 this.stage.addChild(logo);
 
-                var text = new game.Text('HELLO');
-                text.position.x = game.system.width - 200;
-                text.position.y = game.system.height - 200;
-
                 this.player = new game.Player(400, game.system.height - 400);
                 this.player.sprite.addTo(this.playerContainer);
 
@@ -80,33 +76,19 @@ game.module(
         game.createScene('End', {
             init: function () {
                 this.world = new game.World(0, 2000);
-                var floorBody = new game.Body({
-                    position: {
-                        x: game.system.width / 2,
-                        y: game.system.height - 40
-                    },
-                    collisionGroup: 1
-                });
-                var floorShape = new game.Rectangle(game.system.width, 50);
-                floorBody.addShape(floorShape);
-                this.world.addBody(floorBody);
 
                 var bg = new game.Sprite('01_croquis.png').addTo(this.stage);
 
+                var text = new game.Text('Chère Mobilière, \n je me suis fait braquer par un voleur...');
+                text.position.x = game.system.width - 1700;
+                text.position.y = game.system.height - 800;
+                this.stage.addChild(text);
 
                 this.objectContainer = new game.Container().addTo(this.stage);
                 this.playerContainer = new game.Container().addTo(this.stage);
 
-                var logo = new game.Sprite('06_logo_mobi.png');
-                logo.position.x = game.system.width - logo.width - 50;
-                logo.position.y = game.system.height - logo.height;
-                logo.zIndex = 1000;
-                this.stage.addChild(logo);
-
 
             },
-
-
 
             addParallax: function (texture, pos, speed) {
                 var sprite = new game.TilingSprite(texture, game.system.width);
