@@ -7,8 +7,8 @@ game.module(
     )
     .body(function () {
 
-        game.addAudio('backtrack.ogg', 'backtrack');
-        game.addAudio('marimba.ogg', 'marimba');
+        game.addAudio('sound/backtrack.*', 'backtrack');
+        game.addAudio('sound/marimba.*', 'marimba');
 
         game.createScene('Main', {
             init: function () {
