@@ -80,15 +80,17 @@ game.module(
         game.createScene('End', {
             init: function () {
                 this.world = new game.World(0, 2000);
+
+
                 var spriteEndScreen = new game.Sprite('endscreen_vol_de.png', 0, 0, {
                     width : game.system.width,
                     height: game.system.height
                 });
+
                 var bg = spriteEndScreen.addTo(this.stage);
 
-                this.objectContainer = new game.Container().addTo(this.stage);
-                this.playerContainer = new game.Container().addTo(this.stage);
-
+                this.objectContainerEnd = new game.Container().addTo(this.stage);
+                var playAgain = new game.Blop(800,450);
 
             },
 

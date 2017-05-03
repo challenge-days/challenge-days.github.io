@@ -15,5 +15,6 @@ game.addAsset('coin.json');
 game.addAsset('oneway.png');
 game.addAsset('endscreen_vol_de.png');
 game.addAsset('endscreen_vol.png');
+game.addAsset('play_again.png');
 
 });

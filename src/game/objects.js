@@ -219,4 +219,28 @@ game.createClass('Oneway', {
     }
 });
 
+game.createClass('Blop', {
+        init: function(x, y) {
+            this.sprite = new game.Sprite('play_again.png', x, y, {
+                width : 150,
+                height: 150
+            });
+
+            game.scene.objectContainerEnd.addChild(this.sprite);
+            game.scene.addObject(this);
+        },
+
+    mousedown: function() {
+        this.remove();
+    },
+
+    mousemove: function() {
+        this.alpha = 0.5;
+    },
+
+    mouseout: function() {
+        this.alpha = 1;
+    }
+});
+
 });
