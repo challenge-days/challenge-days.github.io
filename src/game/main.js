@@ -55,10 +55,10 @@ game.module(
                 if (rand < 0.5) {
                     var coin = new game.Coin(game.system.width, 400 + Math.random() * 600);
                 }
-                else if (rand < 0.7) {
+                else if (rand < 0.6) {
                     var oneway = new game.Oneway(game.system.width, 400 +  + Math.random() * 400);
                 }
-                else if (rand < 0.7) {
+                else if (rand < 0.8) {
                     var trou = new game.Trou(game.system.width, 972);
                 }
                 else {
