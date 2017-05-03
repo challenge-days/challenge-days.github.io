@@ -60,6 +60,7 @@ game.createClass('Player', {
             this.onGround = true;
         }
         else if (other.collisionGroup === 2) {
+            game.audio.playSound('marimba', false);
             other.parent.remove();
             return false;
         }
@@ -134,8 +135,6 @@ game.createClass('Coin', {
     },
 
     remove: function() {
-        game.audio.playSound('marimba', false);
-
         game.scene.world.removeBody(this.body);
         game.scene.objectContainer.removeChild(this.sprite);
         game.scene.removeObject(this);
