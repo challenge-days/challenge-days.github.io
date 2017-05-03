@@ -67,11 +67,21 @@ game.module(
                 else if (other.collisionGroup === 2) {
                     this.score += 100;
                     this.scoreText.setText("Score: " + this.score);
-                    game.audio.playSound('marimba', false);
+                    if(this.score <= 100) {
+                        game.audio.playSound('marimba', false);
+                    }
+                    else if(this.score >= 200){
+                        game.audio.playSound('victory', false);
+                        game.scene.addTimer(1000, function () {
+                            // Restart game
+                            game.system.setScene('EndWin');
+                        });
+                    }
                     other.parent.remove();
                     return false;
                 }
                 else if (other.collisionGroup === 3) {
+                    game.audio.playSound('death', false);
                     this.kill();
                     return false;
                 }
@@ -84,6 +94,7 @@ game.module(
                     else return false;
                 }
                 else if (other.collisionGroup === 5) {
+                    game.audio.playSound('fall', false);
                     this.fell();
                     return true;
                 }
@@ -106,7 +117,7 @@ game.module(
                 game.scene.world.removeBodyCollision(this.body);
                 this.body.velocity.y = -this.body.velocityLimit.y / 2;
                 this.sprite.textures = this.hitTextures;
-                game.audio.playSound('death', false);
+
                 game.scene.addTimer(3000, function () {
                     // Restart game
                     game.system.setScene('End');

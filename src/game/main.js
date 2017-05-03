@@ -93,9 +93,39 @@ game.module(
                     height: game.system.height
                 });
 
+                var bg = spriteEndScreen.addTo(this.stage);;
+
+            },
+
+            addParallax: function (texture, pos, speed) {
+                var sprite = new game.TilingSprite(texture, game.system.width);
+                sprite.speed.x = speed;
+                sprite.position.y = game.system.height - sprite.height - pos;
+                this.addObject(sprite);
+                this.stage.addChild(sprite);
+            },
+
+            mousedown: function() {
+                game.system.setScene('Main');
+            },
+
+            keydown: function (key) {
+                if (key === 'SPACE')  game.system.setScene('Main');
+            }
+        });
+
+        game.createScene('EndWin', {
+            init: function () {
+                this.world = new game.World(0, 2000);
+
+
+                var spriteEndScreen = new game.Sprite('endscreen_vol.png', 0, 0, {
+                    width : game.system.width,
+                    height: game.system.height
+                });
+
                 var bg = spriteEndScreen.addTo(this.stage);
 
-                this.objectContainerEnd = new game.Container().addTo(this.stage);
 
             },
 

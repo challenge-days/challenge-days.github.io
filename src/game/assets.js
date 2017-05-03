@@ -22,6 +22,8 @@ game.addAudio('sound/backtrack.*', 'backtrack');
 game.addAudio('sound/marimba.*', 'marimba');
 game.addAudio('sound/death.*', 'death');
 game.addAudio('sound/jump.*', 'jump');
+game.addAudio('sound/victory.*', 'victory');
+game.addAudio('sound/fall.*', 'fall');
 
 
 game.addAsset('font/wallfont.fnt');
