@@ -96,8 +96,11 @@ game.module(
                 sprite.position.y = game.system.height - sprite.height - pos;
                 this.addObject(sprite);
                 this.stage.addChild(sprite);
-            }
+            },
 
+            keydown: function (key) {
+                if (key === 'SPACE')  game.system.setScene('Main');
+            }
         });
 
     });
