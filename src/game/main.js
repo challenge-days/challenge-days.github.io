@@ -110,12 +110,7 @@ game.module(
 
             keydown: function (key) {
                 if (key === 'SPACE')  game.system.setScene('Main');
-            },
-
-            mousedown: function () {
-                game.system.setScene('Main');
-            },
-
+            }
         });
 
     });
