@@ -67,10 +67,10 @@ game.module(
                 else if (other.collisionGroup === 2) {
                     this.score += 100;
                     this.scoreText.setText("Score: " + this.score);
-                    if(this.score <= 100) {
+                    if(this.score < 500) {
                         game.audio.playSound('marimba', false);
                     }
-                    else if(this.score >= 200){
+                    else if(this.score >= 500){
                         game.audio.playSound('victory', false);
                         game.scene.addTimer(1000, function () {
                             // Restart game
