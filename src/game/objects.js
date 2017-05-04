@@ -135,6 +135,17 @@ game.module(
                     // Save value to storage
                     game.storage.set('highscore', this.score);
                 }
+
+                this.sendScore(this.score, highscore);
+            },
+
+            sendScore: function(score, highscore) {
+                var json = '{ score: ' + score + ', date: \'' + new Date() + '\', highscore: ' + highscore + '}',
+                    xhr = new XMLHttpRequest();
+
+                xhr.open('POST', 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(json);
             },
 
             update: function () {
