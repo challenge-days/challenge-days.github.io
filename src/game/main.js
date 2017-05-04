@@ -61,13 +61,13 @@ game.module(
             spawnRandomObject: function () {
                 var rand = Math.random();
                 if (rand < 0.1) {
-                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 600, 'cadeau');
+                    var coin = new game.Coin(game.system.width, 350 + Math.random() * 600, 'cadeau');
                 }
                 else if (rand < 0.5) {
-                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 600, 'coin');
+                    var coin = new game.Coin(game.system.width, 350 + Math.random() * 600, 'coin');
                 }
                 else if (rand < 0.6) {
-                    var oneway = new game.Oneway(game.system.width, 400 +  + Math.random() * 400);
+                    var oneway = new game.Oneway(game.system.width, 400 + Math.random() * 400);
                 }
                 else if (rand < 0.8) {
                     var trou = new game.Trou(game.system.width, 972);
