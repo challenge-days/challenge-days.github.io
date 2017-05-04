@@ -3,8 +3,7 @@ game.module(
 )
     .require(
         'game.assets',
-        'game.objects',
-        'engine.core'
+        'game.objects'
     )
     .body(function () {
 
@@ -57,12 +56,6 @@ game.module(
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();
                 game.audio.playMusic('backtrack', true);
-                //add button
-                var button1 = new game.Button();
-                //button1.touchstart = function(){
-                //                        makeFullscreen("game");
-                //                     };
-
 
         },
 
@@ -106,15 +99,14 @@ game.module(
             keydown: function (key) {
                 if (key === 'SPACE') this.player.jump();
             }
-
         });
 
-        game.createScene('End', {
+        game.createScene('EndThief', {
             init: function () {
                 this.world = new game.World(0, 2000);
 
 
-                var spriteEndScreen = new game.Sprite('endscreen_vol_de.png', 0, 0, {
+                var spriteEndScreen = new game.Sprite('killByThief.png', 0, 0, {
                     width : game.system.width,
                     height: game.system.height
                 });
@@ -140,14 +132,6 @@ game.module(
                 xhr.send();
             },
 
-            addParallax: function (texture, pos, speed) {
-                var sprite = new game.TilingSprite(texture, game.system.width);
-                sprite.speed.x = speed;
-                sprite.position.y = game.system.height - sprite.height - pos;
-                this.addObject(sprite);
-                this.stage.addChild(sprite);
-            },
-
             mousedown: function() {
                 game.system.setScene('Main');
             },
@@ -157,27 +141,75 @@ game.module(
             }
         });
 
-        game.createScene('EndWin', {
+        game.createScene('EndHole', {
             init: function () {
                 this.world = new game.World(0, 2000);
 
 
-                var spriteEndScreen = new game.Sprite('endscreen_vol.png', 0, 0, {
+                var spriteEndScreen = new game.Sprite('killByHole.png', 0, 0, {
                     width : game.system.width,
                     height: game.system.height
                 });
 
+                var besthighscore = this.getBesthighscore(this.stage);
+
                 var bg = spriteEndScreen.addTo(this.stage);
-
-
             },
 
-            addParallax: function (texture, pos, speed) {
-                var sprite = new game.TilingSprite(texture, game.system.width);
-                sprite.speed.x = speed;
-                sprite.position.y = game.system.height - sprite.height - pos;
-                this.addObject(sprite);
-                this.stage.addChild(sprite);
+            getBesthighscore: function(stage) {
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
+                        var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
+                        globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
+                        globalhighscoreText.position.y = 30;
+                        stage.addChild(globalhighscoreText);
+                    }
+                };
+                xhr.send();
+            },
+
+            mousedown: function() {
+                game.system.setScene('Main');
+            },
+
+            keydown: function (key) {
+                if (key === 'SPACE')  game.system.setScene('Main');
+            }
+        });
+
+        game.createScene('EndPlane', {
+            init: function () {
+                this.world = new game.World(0, 2000);
+
+
+                var spriteEndScreen = new game.Sprite('killByPlane.png', 0, 0, {
+                    width : game.system.width,
+                    height: game.system.height
+                });
+
+                var besthighscore = this.getBesthighscore(this.stage);
+
+                var bg = spriteEndScreen.addTo(this.stage);
+            },
+
+            getBesthighscore: function(stage) {
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
+                        var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
+                        globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
+                        globalhighscoreText.position.y = 30;
+                        stage.addChild(globalhighscoreText);
+                    }
+                };
+                xhr.send();
             },
 
             mousedown: function() {
@@ -190,26 +222,8 @@ game.module(
         });
 
 
-
     });
 
-
-function makeFullscreen(id){
-     var el = document.getElementById(id);
-
-     if	(el.requestFullScreen){
-        el.requestFullScreen();
-
-        }
-     else if(el.webkitRequestFullScreen) {
-        el.webkitRequestFullScreen();
-
-        }
-     else if(el.mozRequestFullScreen){
-        el.mozRequestFullScreen();
-
-     }
-  };
 
 
 

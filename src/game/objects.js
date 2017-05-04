@@ -32,7 +32,8 @@ game.module(
                     // 3 = obstacle
                     // 4 = oneway
                     // 5 = trou
-                    collideAgainst: [1, 2, 3, 4, 5],
+                    // 6 = avion
+                    collideAgainst: [1, 2, 3, 4, 5, 6],
                     velocityLimit: {
                         x: 200,
                         y: 1200
@@ -102,6 +103,11 @@ game.module(
                     this.fell();
                     return true;
                 }
+                else if (other.collisionGroup === 6){
+                    game.audio.playSound('planeDeath', false);
+                    this.killByPlane();
+                    return true;
+                }
                 return true;
             },
 
@@ -113,7 +119,7 @@ game.module(
 
                 game.scene.addTimer(2000, function () {
                     // Restart game
-                    game.system.setScene('End');
+                    game.system.setScene('EndHole');
                 });
             },
             kill: function () {
@@ -126,7 +132,20 @@ game.module(
 
                 game.scene.addTimer(2500, function () {
                     // Restart game
-                    game.system.setScene('End');
+                    game.system.setScene('EndThief');
+                });
+            },
+            killByPlane: function () {
+                this.dead();
+                this.killed = true;
+                this.body.mass = 1;
+                game.scene.world.removeBodyCollision(this.body);
+                this.body.velocity.y = -this.body.velocityLimit.y / 2;
+                this.sprite.textures = this.hitTextures;
+
+                game.scene.addTimer(2500, function () {
+                    // Restart game
+                    game.system.setScene('EndPlane');
                 });
             },
 
@@ -295,7 +314,7 @@ game.module(
                         x: x + this.sprite.width,
                         y: y
                     },
-                    collisionGroup: 3
+                    collisionGroup: 6
                 });
 
                 this.body.velocity.x = -600;
@@ -367,24 +386,4 @@ game.module(
             }
         });
 
-
-        game.createClass('Button', {
-        init: function() {
-                this.sprite = new game.Sprite('fullscreen.png');
-                this.sprite.interactive = true;
-                this.sprite.position.set(350, 50);
-                this.sprite.mousedown = this.mousedown.bind(this);
-                this.sprite.touchstart = this.touchstart.bind(this);
-                game.scene.objectContainer.addChild(this.sprite);
-                game.scene.addObject(this);
-                }
-                ,
-               mousedown: function() {
-                        makeFullscreen("game");
-                       //alert('alert');
-               },
-               touchstart : function (e) {
-                        makeFullscreen("game");
-               }
-         });
     });

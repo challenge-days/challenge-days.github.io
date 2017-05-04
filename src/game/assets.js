@@ -15,8 +15,9 @@ game.addAsset('player.json');
 game.addAsset('coin.json');
 game.addAsset('cadeau.json');
 game.addAsset('oneway.png');
-game.addAsset('endscreen_vol_de.png');
-game.addAsset('endscreen_vol.png');
+game.addAsset('killByThief.png');
+game.addAsset('killByHole.png');
+game.addAsset('killByPlane.png');
 game.addAsset('play_again.png');
 game.addAsset('plane.png');
 game.addAsset('fullscreen.png');
@@ -30,6 +31,7 @@ game.addAudio('sound/fall.*', 'fall');
 game.addAudio('sound/coin.*', 'coin');
 game.addAudio('sound/gift.*', 'gift');
 game.addAudio('sound/plane.*', 'plane');
+game.addAudio('sound/planeDeath.*', 'planeDeath');
 
 
 game.addAsset('font/wallfont.fnt');
