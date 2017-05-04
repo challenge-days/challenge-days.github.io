@@ -26,6 +26,7 @@ game.addAudio('sound/death.*', 'death');
 game.addAudio('sound/jump.*', 'jump');
 game.addAudio('sound/victory.*', 'victory');
 game.addAudio('sound/fall.*', 'fall');
+game.addAudio('sound/coin.*', 'coin');
 
 
 game.addAsset('font/wallfont.fnt');
