@@ -42,7 +42,7 @@ game.module(
                 this.player.sprite.addTo(this.playerContainer);
 
                 var scoreText = new game.BitmapText("Score: 0", { font: '80px wallfont' });
-                scoreText.position.x = game.system.width - scoreText.width - 350;;
+                scoreText.position.x = game.system.width - scoreText.width - 450;;
                 scoreText.position.y = 30;
                 this.stage.addChild(scoreText);
                 this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
@@ -50,7 +50,7 @@ game.module(
                 var highscore = game.storage.get('highscore', 0)
                 if (highscore > 0) {
                     var highscoreText = new game.BitmapText("Highscore: " + highscore, {font: '80px wallfont'});
-                    highscoreText.position.x = game.system.width - scoreText.width - 350;
+                    highscoreText.position.x = game.system.width - scoreText.width - 450;
                     highscoreText.position.y = 130;
                     this.stage.addChild(highscoreText);
                 }
@@ -120,7 +120,7 @@ game.module(
             },
 
             getBesthighscore: function(stage) {
-                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"highscore": -1}&l=1';
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', url);
                 xhr.onload = function() {
@@ -128,8 +128,14 @@ game.module(
                         var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
                         var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
                         globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
-                        globalhighscoreText.position.y = 30;
+                        globalhighscoreText.position.y = 130;
                         stage.addChild(globalhighscoreText);
+
+                        var highscore = game.storage.get('highscore');
+                        var scoreText = new game.BitmapText("Your highscore: " + highscore, {font: '80px wallfont'});
+                        scoreText.position.x = globalhighscoreText.position.x;
+                        scoreText.position.y = 30;
+                        stage.addChild(scoreText);
                     }
                 };
                 xhr.send();
@@ -160,7 +166,7 @@ game.module(
             },
 
             getBesthighscore: function(stage) {
-                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"highscore": -1}&l=1';
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', url);
                 xhr.onload = function() {
@@ -168,8 +174,15 @@ game.module(
                         var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
                         var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
                         globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
-                        globalhighscoreText.position.y = 30;
+                        globalhighscoreText.position.y = 130;
                         stage.addChild(globalhighscoreText);
+
+                        var highscore = game.storage.get('highscore');
+                        var scoreText = new game.BitmapText("Your highscore: " + highscore, {font: '80px wallfont'});
+                        scoreText.position.x = globalhighscoreText.position.x;
+                        scoreText.position.y = 30;
+                        stage.addChild(scoreText);
+
                     }
                 };
                 xhr.send();
@@ -200,7 +213,7 @@ game.module(
             },
 
             getBesthighscore: function(stage) {
-                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"highscore": -1}&l=1';
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', url);
                 xhr.onload = function() {
@@ -208,8 +221,14 @@ game.module(
                         var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
                         var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
                         globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
-                        globalhighscoreText.position.y = 30;
+                        globalhighscoreText.position.y = 130;
                         stage.addChild(globalhighscoreText);
+
+                        var highscore = game.storage.get('highscore');
+                        var scoreText = new game.BitmapText("Your highscore: " + highscore, {font: '80px wallfont'});
+                        scoreText.position.x = globalhighscoreText.position.x;
+                        scoreText.position.y = 30;
+                        stage.addChild(scoreText);
                     }
                 };
                 xhr.send();

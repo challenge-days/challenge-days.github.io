@@ -158,8 +158,9 @@ game.module(
 
                 var highscore = game.storage.get('highscore', 0);
                 if(this.score > highscore) {
+                    highscore = this.score;
                     // Save value to storage
-                    game.storage.set('highscore', this.score);
+                    game.storage.set('highscore', highscore);
                 }
 
                 this.sendScore(this.score, highscore);
