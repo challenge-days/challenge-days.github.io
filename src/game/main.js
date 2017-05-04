@@ -4,7 +4,8 @@ game.module(
     .require(
         'game.assets',
         'game.objects',
-        'engine.core'
+        'engine.core',
+        'engine.system'
     )
     .body(function () {
 
