@@ -65,7 +65,7 @@ game.module(
                     var trou = new game.Trou(game.system.width, 972);
                 }
                 else {
-                    var voleur = new game.Tires(game.system.width, 850);
+                    var voleur = new game.Voleur(game.system.width, 850);
                 }
             },
 
