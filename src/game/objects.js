@@ -75,7 +75,6 @@ game.module(
                     this.doubleJump = true;
                 }
                 else if (other.collisionGroup === 2) {
-                    game.system.vibrate(100);
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
                         if (other.parent.points >= 1000) {
