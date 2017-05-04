@@ -40,10 +40,18 @@ game.module(
                 this.player.sprite.addTo(this.playerContainer);
 
                 var scoreText = new game.BitmapText("Score: 0", { font: '80px wallfont' });
-                scoreText.position.x = game.system.width - scoreText.width - 250;;
+                scoreText.position.x = game.system.width - scoreText.width - 350;;
                 scoreText.position.y = 30;
                 this.stage.addChild(scoreText);
                 this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
+
+                var highscore = game.storage.get('highscore', 0)
+                if (highscore > 0) {
+                    var highscoreText = new game.BitmapText("Highscore: " + highscore, {font: '80px wallfont'});
+                    highscoreText.position.x = game.system.width - scoreText.width - 350;
+                    highscoreText.position.y = 130;
+                    this.stage.addChild(highscoreText);
+                }
 
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();
@@ -53,13 +61,13 @@ game.module(
             spawnRandomObject: function () {
                 var rand = Math.random();
                 if (rand < 0.1) {
-                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 600, 'cadeau');
+                    var coin = new game.Coin(game.system.width, 350 + Math.random() * 600, 'cadeau');
                 }
                 else if (rand < 0.5) {
-                    var coin = new game.Coin(game.system.width, 400 + Math.random() * 600, 'coin');
+                    var coin = new game.Coin(game.system.width, 350 + Math.random() * 600, 'coin');
                 }
                 else if (rand < 0.6) {
-                    var oneway = new game.Oneway(game.system.width, 400 +  + Math.random() * 400);
+                    var oneway = new game.Oneway(game.system.width, 400 + Math.random() * 400);
                 }
                 else if (rand < 0.8) {
                     var trou = new game.Trou(game.system.width, 972);
