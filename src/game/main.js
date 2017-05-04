@@ -109,8 +109,25 @@ game.module(
                     height: game.system.height
                 });
 
-                var bg = spriteEndScreen.addTo(this.stage);;
+                var besthighscore = this.getBesthighscore(this.stage);
 
+                var bg = spriteEndScreen.addTo(this.stage);
+            },
+
+            getBesthighscore: function(stage) {
+                var url = 'https://api.mlab.com/api/1/databases/sketchman/collections/scores?apiKey=aCkr2XwFWw9A55VkA8YE10g69NxFXWSg&s={"score": -1}&l=1';
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
+                        var globalhighscoreText = new game.BitmapText("Best Highscore: " + globalhighscore, {font: '80px wallfont'});
+                        globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
+                        globalhighscoreText.position.y = 30;
+                        stage.addChild(globalhighscoreText);
+                    }
+                };
+                xhr.send();
             },
 
             addParallax: function (texture, pos, speed) {
