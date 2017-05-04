@@ -7,7 +7,7 @@ game.module(
     )
     .body(function () {
 
-        game.createScene('Main', {
+       game.createScene('Main', {
             init: function () {
                 this.world = new game.World(0, 2000);
                 var floorBody = new game.Body({
@@ -56,6 +56,7 @@ game.module(
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();
                 game.audio.playMusic('backtrack', true);
+
         },
 
             spawnRandomObject: function () {
@@ -162,3 +163,17 @@ game.module(
         });
 
     });
+
+
+ function makeFullscreen(id){
+     var el = document.getElementById(id);
+     if	(el.requestFullScreen){
+        el.requestFullScreen();
+        }
+     else if(el.webkitRequestFullScreen) {
+        el.webkitRequestFullScreen();
+        }
+     else if(el.mozRequestFullScreen){
+        el.mozRequestFullScreen();
+     }
+  };
