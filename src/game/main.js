@@ -3,7 +3,8 @@ game.module(
 )
     .require(
         'game.assets',
-        'game.objects'
+        'game.objects',
+        'engine.core'
     )
     .body(function () {
 
@@ -56,7 +57,8 @@ game.module(
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();
                 game.audio.playMusic('backtrack', true);
-
+                //add button
+                var button1 = new game.Button();
         },
 
             spawnRandomObject: function () {
@@ -94,6 +96,7 @@ game.module(
 
             mousedown: function () {
                 this.player.jump();
+                game.system.vibrate(500);
             },
 
             keydown: function (key) {
@@ -216,6 +219,7 @@ game.module(
                 game.system.setScene('Main');
             },
 
+
             keydown: function (key) {
                 if (key === 'SPACE')  game.system.setScene('Main');
             }
@@ -223,8 +227,5 @@ game.module(
 
 
     });
-
-
-
 
 
