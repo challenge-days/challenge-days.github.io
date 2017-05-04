@@ -59,7 +59,7 @@ game.module(
                 this.spawnRandomObject();
                 game.audio.playMusic('backtrack', true);
                 //add button
-                var button1 = new game.Button();
+                //var button1 = new game.Button();
         },
 
             spawnRandomObject: function () {
