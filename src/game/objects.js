@@ -227,9 +227,9 @@ game.module(
             }
         });
 
-        game.createClass('Tires', {
+        game.createClass('Voleur', {
             init: function (x, y) {
-                this.sprite = new game.Sprite('tires.png');
+                this.sprite = new game.Sprite('voleur.png');
                 this.sprite.anchor.set(0.5, 0.5);
 
                 this.body = new game.Body({
