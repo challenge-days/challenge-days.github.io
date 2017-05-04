@@ -241,7 +241,7 @@ game.module(
                 });
 
                 this.body.velocity.x = -600;
-                var shape = new game.Rectangle(this.sprite.width, this.sprite.height);
+                var shape = new game.Rectangle(this.sprite.width/2, this.sprite.height);
                 this.body.addShape(shape);
                 game.scene.objectContainer.addChild(this.sprite);
                 game.scene.world.addBody(this.body);
