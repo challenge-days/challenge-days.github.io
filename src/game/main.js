@@ -59,6 +59,9 @@ game.module(
                 game.audio.playMusic('backtrack', true);
                 //add button
                 var button1 = new game.Button();
+                //button1.touchstart = function(){
+                //                        makeFullscreen("game");
+                //                     };
 
 
         },
