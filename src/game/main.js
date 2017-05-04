@@ -121,7 +121,7 @@ game.module(
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         var globalhighscore = JSON.parse(xhr.responseText)[0].highscore;
-                        var globalhighscoreText = new game.BitmapText("Best Highscore: " + globalhighscore, {font: '80px wallfont'});
+                        var globalhighscoreText = new game.BitmapText("All time highscore: " + globalhighscore, {font: '80px wallfont'});
                         globalhighscoreText.position.x = game.system.width - globalhighscoreText.width - 350;
                         globalhighscoreText.position.y = 30;
                         stage.addChild(globalhighscoreText);
