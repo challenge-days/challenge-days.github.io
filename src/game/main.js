@@ -22,7 +22,7 @@ game.module(
                 this.world.addBody(floorBody);
 
                 var bg = new game.Sprite('01_croquis.png').addTo(this.stage);
-                this.addParallax('03_city.png', 150, -200);
+                this.addParallax('clouds.png', 150, -200);
                 this.addParallax('04_city.png', 100, -300);
                 this.addParallax('05_bush.png', 50, -500);
                 this.addParallax('platform.png', 0, -600);

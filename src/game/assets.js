@@ -4,7 +4,7 @@ game.module(
 .body(function() {
     
 game.addAsset('01_croquis.png');
-game.addAsset('03_city.png');
+game.addAsset('clouds.png');
 game.addAsset('04_city.png');
 game.addAsset('05_bush.png');
 game.addAsset('06_logo_mobi.png');

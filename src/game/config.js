@@ -1,5 +1,5 @@
 pandaConfig = {
-    name: 'MyPandaGame',
+    name: 'MobiGameVorsicherung',
     version: '0.0.0',
 
     system: {
