@@ -73,7 +73,7 @@ game.module(
                     var trou = new game.Trou(game.system.width, 972);
                 }
                 else if (rand < 0.9){
-                    var plane = new game.Plane(game.system.width, 200);
+                    var plane = new game.Plane(game.system.width, 200 + (200 * rand));
                 }
                 else {
                     var voleur = new game.Voleur(game.system.width, 850);
