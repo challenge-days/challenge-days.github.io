@@ -68,7 +68,12 @@ game.module(
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
                     if(this.score < 500) {
-                        game.audio.playSound('marimba', false);
+                        if (other.parent.points >= 100) {
+                            game.audio.playSound('marimba', false);
+                        } else {
+                            // TODO trouver le son mario des pièces
+                            // game.audio.playSound('marimba', false);
+                        }
                     }
                     else if(this.score >= 500){
                         game.audio.playSound('victory', false);
