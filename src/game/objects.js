@@ -73,21 +73,11 @@ game.module(
                 else if (other.collisionGroup === 2) {
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
-                    if(this.score < 50000) {
                         if (other.parent.points >= 1000) {
                             game.audio.playSound('marimba', false);
                         } else {
-                            // TODO trouver le son mario des pièces
-                            // game.audio.playSound('marimba', false);
+                            game.audio.playSound('coin', false);
                         }
-                    }
-                    else if(this.score >= 50000){
-                        game.audio.playSound('victory', false);
-                        game.scene.addTimer(1000, function () {
-                            // Restart game
-                            game.system.setScene('EndWin');
-                        });
-                    }
                     other.parent.remove();
                     return false;
                 }
@@ -118,7 +108,7 @@ game.module(
                 game.scene.world.removeBodyCollision(this.body);
                 this.sprite.textures = this.hitTextures;
 
-                game.scene.addTimer(500, function () {
+                game.scene.addTimer(2000, function () {
                     // Restart game
                     game.system.setScene('End');
                 });
@@ -131,7 +121,7 @@ game.module(
                 this.body.velocity.y = -this.body.velocityLimit.y / 2;
                 this.sprite.textures = this.hitTextures;
 
-                game.scene.addTimer(3000, function () {
+                game.scene.addTimer(2500, function () {
                     // Restart game
                     game.system.setScene('End');
                 });
