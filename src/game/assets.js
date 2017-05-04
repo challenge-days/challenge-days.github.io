@@ -29,7 +29,9 @@ game.addAudio('sound/jump.*', 'jump');
 game.addAudio('sound/victory.*', 'victory');
 game.addAudio('sound/fall.*', 'fall');
 game.addAudio('sound/coin.*', 'coin');
-game.addAudio('sound/gift.*', 'gift');
+game.addAudio('sound/gift1.*', 'gift1');
+game.addAudio('sound/gift2.*', 'gift2');
+game.addAudio('sound/gift3.*', 'gift3');
 game.addAudio('sound/plane.*', 'plane');
 game.addAudio('sound/planeDeath.*', 'planeDeath');
 

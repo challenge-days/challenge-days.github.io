@@ -80,7 +80,16 @@ game.module(
                         if (other.parent.points >= 1000) {
                             game.audio.playSound('coin', false);
                         } else {
-                            game.audio.playSound('gift', false);
+                            var rand = Math.random();
+                            if (rand < 0.4) {
+                                game.audio.playSound('gift1', false);
+                            }
+                            else if (rand < 0.7) {
+                                game.audio.playSound('gift2', false);
+                            }
+                            else {
+                                game.audio.playSound('gift3', false);
+                            }
                         }
                     other.parent.remove();
                     return false;
