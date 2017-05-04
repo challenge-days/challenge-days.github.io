@@ -87,13 +87,13 @@ game.module(
                     return false;
                 }
                 else if (other.collisionGroup === 3) {
-                game.system.vibrate(100);
+                    game.system.vibrate(100);
                     game.audio.playSound('death', false);
                     this.kill();
                     return false;
                 }
                 else if (other.collisionGroup === 4) {
-                    game.system.vibrate(100);
+
                     if (this.body.last.y + this.body.shape.height / 2 <= other.position.y - other.shape.height / 2) {
                         this.body.velocity.y = 0;
                         this.onGround = true;
