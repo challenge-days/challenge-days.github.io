@@ -164,20 +164,19 @@ game.module(
 
     });
 
-
  function makeFullscreen(id){
      var el = document.getElementById(id);
      var fs = document.getElementById('fullscreen');
      if	(el.requestFullScreen){
         el.requestFullScreen();
-        fs.visible = hidden;
+        fs.visible = false;
         }
      else if(el.webkitRequestFullScreen) {
         el.webkitRequestFullScreen();
-        fs.visible = hidden;
+        fs.visible = false;
         }
      else if(el.mozRequestFullScreen){
         el.mozRequestFullScreen();
-        fs.visible = hidden;
+        fs.visible =  false;
      }
   };
