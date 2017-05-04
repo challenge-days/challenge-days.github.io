@@ -3,7 +3,8 @@ game.module(
 )
     .require(
         'game.assets',
-        'game.objects'
+        'game.objects',
+        'engine.core'
     )
     .body(function () {
 
@@ -56,6 +57,9 @@ game.module(
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();
                 game.audio.playMusic('backtrack', true);
+                //add button
+                var button1 = new game.Button();
+
 
         },
 
@@ -97,6 +101,7 @@ game.module(
             keydown: function (key) {
                 if (key === 'SPACE') this.player.jump();
             }
+
         });
 
         game.createScene('End', {
@@ -183,6 +188,23 @@ game.module(
 
     });
 
+
+function makeFullscreen(id){
+     var el = document.getElementById(id);
+
+     if	(el.requestFullScreen){
+        el.requestFullScreen();
+
+        }
+     else if(el.webkitRequestFullScreen) {
+        el.webkitRequestFullScreen();
+
+        }
+     else if(el.mozRequestFullScreen){
+        el.mozRequestFullScreen();
+
+     }
+  };
 
 
 

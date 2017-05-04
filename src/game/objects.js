@@ -364,4 +364,20 @@ game.module(
             }
         });
 
+
+            game.createClass('Button', {
+            init: function() {
+                    this.sprite = new game.Sprite('fullscreen.png');
+                    this.sprite.interactive = true;
+                    this.sprite.position.set(350, 50);
+                    this.sprite.mousedown = this.mousedown.bind(this);
+                    game.scene.objectContainer.addChild(this.sprite);
+                    game.scene.addObject(this);
+                    },
+                    mousedown: function() {
+                            makeFullscreen("game");
+                           //alert('alert');
+                     }
+                  });
+
     });
