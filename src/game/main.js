@@ -76,6 +76,8 @@ game.module(
                 else if (rand < 0.9){
                     var rand2 = Math.random();
                     var plane = new game.Plane(game.system.width, 200 + (200 * rand2));
+                    game.audio.playSound('plane');
+
                 }
                 else {
                     var voleur = new game.Voleur(game.system.width, 850);

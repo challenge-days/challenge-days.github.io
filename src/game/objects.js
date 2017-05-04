@@ -50,6 +50,9 @@ game.module(
                 this.addScoreTimer = game.scene.addTimer(20, function() {
                     self.score += self.addscore;
                     self.scoreText.setText("Score: " + self.score);
+                    if(self.score%1000 == 0){
+                        game.audio.playSound('marimba');
+                    }
                 }, true);
             },
 
@@ -74,9 +77,9 @@ game.module(
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
                         if (other.parent.points >= 1000) {
-                            game.audio.playSound('marimba', false);
-                        } else {
                             game.audio.playSound('coin', false);
+                        } else {
+                            game.audio.playSound('gift', false);
                         }
                     other.parent.remove();
                     return false;
