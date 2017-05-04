@@ -75,6 +75,7 @@ game.module(
                     this.doubleJump = true;
                 }
                 else if (other.collisionGroup === 2) {
+                    game.system.vibrate(100);
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
                         if (other.parent.points >= 1000) {
@@ -86,11 +87,13 @@ game.module(
                     return false;
                 }
                 else if (other.collisionGroup === 3) {
+                game.system.vibrate(100);
                     game.audio.playSound('death', false);
                     this.kill();
                     return false;
                 }
                 else if (other.collisionGroup === 4) {
+                    game.system.vibrate(100);
                     if (this.body.last.y + this.body.shape.height / 2 <= other.position.y - other.shape.height / 2) {
                         this.body.velocity.y = 0;
                         this.onGround = true;
@@ -99,11 +102,13 @@ game.module(
                     else return false;
                 }
                 else if (other.collisionGroup === 5) {
+                    game.system.vibrate(100);
                     game.audio.playSound('fall', false);
                     this.fell();
                     return true;
                 }
                 else if (other.collisionGroup === 6){
+                    game.system.vibrate(100);
                     game.audio.playSound('planeDeath', false);
                     this.killByPlane();
                     return true;

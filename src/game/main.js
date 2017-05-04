@@ -97,7 +97,6 @@ game.module(
 
             mousedown: function () {
                 this.player.jump();
-                game.system.vibrate(500);
             },
 
             keydown: function (key) {
