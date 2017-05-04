@@ -7,6 +7,7 @@ game.module(
             onGround: false,
             doubleJump: true,
             score: 0,
+            addscore: 1, // ajouté tout les x ms
 
             init: function (x, y) {
                 this.sprite = game.Animation.fromFrames('run');
@@ -45,6 +46,11 @@ game.module(
                 this.body.addShape(shape);
                 game.scene.world.addBody(this.body);
                 game.scene.addObject(this);
+                self = this;
+                this.addScoreTimer = game.scene.addTimer(20, function() {
+                    self.score += self.addscore;
+                    self.scoreText.setText("Score: " + self.score);
+                }, true);
             },
 
             jump: function () {
@@ -67,15 +73,15 @@ game.module(
                 else if (other.collisionGroup === 2) {
                     this.score += other.parent.points;
                     this.scoreText.setText("Score: " + this.score);
-                    if(this.score < 500) {
-                        if (other.parent.points >= 100) {
+                    if(this.score < 50000) {
+                        if (other.parent.points >= 1000) {
                             game.audio.playSound('marimba', false);
                         } else {
                             // TODO trouver le son mario des pièces
                             // game.audio.playSound('marimba', false);
                         }
                     }
-                    else if(this.score >= 500){
+                    else if(this.score >= 50000){
                         game.audio.playSound('victory', false);
                         game.scene.addTimer(1000, function () {
                             // Restart game
@@ -107,6 +113,7 @@ game.module(
             },
 
             fell: function() {
+                this.dead();
                 this.body.mass = 3;
                 game.scene.world.removeBodyCollision(this.body);
                 this.sprite.textures = this.hitTextures;
@@ -117,6 +124,7 @@ game.module(
                 });
             },
             kill: function () {
+                this.dead();
                 this.killed = true;
                 this.body.mass = 1;
                 game.scene.world.removeBodyCollision(this.body);
@@ -127,6 +135,16 @@ game.module(
                     // Restart game
                     game.system.setScene('End');
                 });
+            },
+
+            dead: function() {
+                this.addscore = 0; // faire une pause au addScoreTimer ne fonctionnait pas toujours
+
+                var highscore = game.storage.get('highscore', 0);
+                if(this.score > highscore) {
+                    // Save value to storage
+                    game.storage.set('highscore', this.score);
+                }
             },
 
             update: function () {
@@ -152,10 +170,10 @@ game.module(
             init: function (x, y, type) {
                 if (type === 'coin') {
                     this.sprite = game.Animation.fromFrames('coin-gold');
-                    this.points = 10;
+                    this.points = 300;
                 } else {
                     this.sprite = game.Animation.fromFrames('cadeau-gold');
-                    this.points = 100;
+                    this.points = 1000;
                 }
                 this.sprite.animationSpeed = 0.2;
                 this.sprite.anchor.set(0.5, 0.5);

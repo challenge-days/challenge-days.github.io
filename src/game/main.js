@@ -40,10 +40,18 @@ game.module(
                 this.player.sprite.addTo(this.playerContainer);
 
                 var scoreText = new game.BitmapText("Score: 0", { font: '80px wallfont' });
-                scoreText.position.x = game.system.width - scoreText.width - 250;;
+                scoreText.position.x = game.system.width - scoreText.width - 350;;
                 scoreText.position.y = 30;
                 this.stage.addChild(scoreText);
                 this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
+
+                var highscore = game.storage.get('highscore', 0)
+                if (highscore > 0) {
+                    var highscoreText = new game.BitmapText("Highscore: " + highscore, {font: '80px wallfont'});
+                    highscoreText.position.x = game.system.width - scoreText.width - 350;
+                    highscoreText.position.y = 130;
+                    this.stage.addChild(highscoreText);
+                }
 
                 this.addTimer(1500, this.spawnRandomObject.bind(this), true);
                 this.spawnRandomObject();

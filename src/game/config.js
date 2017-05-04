@@ -5,5 +5,9 @@ pandaConfig = {
     system: {
         width: 1920,
         height: 1024
+    },
+
+    storage: {
+        id: 'ch.mobi.MobiGameVorsicherung'
     }
 };
