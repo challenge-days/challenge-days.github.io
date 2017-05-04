@@ -45,9 +45,9 @@ game.module(
                 this.stage.addChild(scoreText);
                 this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
 
-        this.addTimer(1500, this.spawnRandomObject.bind(this), true);
-        this.spawnRandomObject();
-        game.audio.playMusic('backtrack', true);
+                this.addTimer(1500, this.spawnRandomObject.bind(this), true);
+                this.spawnRandomObject();
+                game.audio.playMusic('backtrack', true);
         },
 
             spawnRandomObject: function () {
