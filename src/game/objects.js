@@ -11,7 +11,7 @@ game.module(
             init: function (x, y) {
                 this.sprite = game.Animation.fromFrames('run');
                 this.sprite.animationSpeed = 0.2;
-                this.sprite.anchor.set(0.5, 0.6);
+                this.sprite.anchor.set(0.4, 0.4);
                 this.sprite.play();
 
                 this.runTextures = this.sprite.textures;
