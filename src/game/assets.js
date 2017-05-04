@@ -18,6 +18,7 @@ game.addAsset('oneway.png');
 game.addAsset('endscreen_vol_de.png');
 game.addAsset('endscreen_vol.png');
 game.addAsset('play_again.png');
+game.addAsset('plane.png');
 
 game.addAudio('sound/backtrack.*', 'backtrack');
 game.addAudio('sound/marimba.*', 'marimba');

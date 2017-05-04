@@ -280,6 +280,42 @@ game.module(
             }
         });
 
+
+        game.createClass('Plane', {
+            init: function (x, y) {
+                this.sprite = new game.Sprite('plane.png');
+                this.sprite.anchor.set(0.5, 0.5);
+
+                this.body = new game.Body({
+                    position: {
+                        x: x + this.sprite.width,
+                        y: y
+                    },
+                    collisionGroup: 3
+                });
+
+                this.body.velocity.x = -600;
+                var shape = new game.Rectangle(this.sprite.width/2, this.sprite.height);
+                this.body.addShape(shape);
+                game.scene.objectContainer.addChild(this.sprite);
+                game.scene.world.addBody(this.body);
+                game.scene.addObject(this);
+            },
+
+            remove: function () {
+                game.scene.world.removeBody(this.body);
+                game.scene.objectContainer.removeChild(this.sprite);
+                game.scene.removeObject(this);
+            },
+
+            update: function () {
+                this.sprite.position.x = this.body.position.x;
+                this.sprite.position.y = this.body.position.y;
+
+                if (this.body.position.x + this.sprite.width / 2 < 0) this.remove();
+            }
+        });
+
         game.createClass('Oneway', {
             init: function (x, y) {
                 this.sprite = new game.Sprite('oneway.png');
