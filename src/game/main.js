@@ -43,7 +43,7 @@ game.module(
 
                 var scoreText = new game.BitmapText("Score: 0", { font: '80px wallfont' });
                 scoreText.position.x = game.system.width - scoreText.width - 450;;
-                scoreText.position.y = 30;
+                scoreText.position.y = 50;
                 this.stage.addChild(scoreText);
                 this.player.scoreText = scoreText;  // DEGEU.... mais je sais pas faire
 
