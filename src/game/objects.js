@@ -160,10 +160,10 @@ game.module(
             init: function (x, y, type) {
                 if (type === 'coin') {
                     this.sprite = game.Animation.fromFrames('coin-gold');
-                    this.points = 300;
+                    this.points = 1000;
                 } else {
                     this.sprite = game.Animation.fromFrames('cadeau-gold');
-                    this.points = 1000;
+                    this.points = 300;
                 }
                 this.sprite.animationSpeed = 0.2;
                 this.sprite.anchor.set(0.5, 0.5);
