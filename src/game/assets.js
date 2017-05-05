@@ -2,7 +2,7 @@ game.module(
     'game.assets'
 )
 .body(function() {
-    
+
 game.addAsset('01_croquis.png');
 game.addAsset('clouds.png');
 game.addAsset('04_city.png');
@@ -14,11 +14,11 @@ game.addAsset('voleur.png');
 game.addAsset('player.json');
 game.addAsset('coin.json');
 game.addAsset('cadeau.json');
+game.addAsset('play_again.png');
 game.addAsset('oneway.png');
 game.addAsset('killByThief.png');
 game.addAsset('killByHole.png');
 game.addAsset('killByPlane.png');
-game.addAsset('play_again.png');
 game.addAsset('plane.png');
 game.addAsset('fullscreen.png');
 
@@ -26,7 +26,6 @@ game.addAudio('sound/backtrack.*', 'backtrack');
 game.addAudio('sound/marimba.*', 'marimba');
 game.addAudio('sound/death.*', 'death');
 game.addAudio('sound/jump.*', 'jump');
-game.addAudio('sound/victory.*', 'victory');
 game.addAudio('sound/fall.*', 'fall');
 game.addAudio('sound/coin.*', 'coin');
 game.addAudio('sound/gift1.*', 'gift1');
