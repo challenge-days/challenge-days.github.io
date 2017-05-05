@@ -117,6 +117,9 @@ game.module(
                 var besthighscore = this.getBesthighscore(this.stage);
 
                 var bg = spriteEndScreen.addTo(this.stage);
+
+                game.audio.playSound('liebe', false);
+
             },
 
             getBesthighscore: function(stage) {
@@ -163,6 +166,9 @@ game.module(
                 var besthighscore = this.getBesthighscore(this.stage);
 
                 var bg = spriteEndScreen.addTo(this.stage);
+
+                game.audio.playSound('liebe', false);
+
             },
 
             getBesthighscore: function(stage) {
@@ -210,6 +216,9 @@ game.module(
                 var besthighscore = this.getBesthighscore(this.stage);
 
                 var bg = spriteEndScreen.addTo(this.stage);
+
+                game.audio.playSound('liebe', false);
+
             },
 
             getBesthighscore: function(stage) {

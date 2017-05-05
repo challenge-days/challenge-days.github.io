@@ -34,6 +34,7 @@ game.addAudio('sound/gift2.*', 'gift2');
 game.addAudio('sound/gift3.*', 'gift3');
 game.addAudio('sound/plane.*', 'plane');
 game.addAudio('sound/planeDeath.*', 'planeDeath');
+game.addAudio('sound/liebe.*', 'liebe');
 
 
 game.addAsset('font/wallfont.fnt');
